@@ -1,0 +1,18 @@
+.max-width{
+    max-width: 600px;
+    flex: auto;
+}
+
+.fitcontent{
+    width: fit-content;
+}
+/*.max-width{
+    max-width: fit-content;
+}*/
+
+.dialog-container-padding {
+    
+    padding: 15px!important;
+    
+    
+}

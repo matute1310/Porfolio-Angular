@@ -1,0 +1,94 @@
+.borde{
+    border :2px solid rgba(245, 245, 245, .8);
+}
+.margin-logo{
+    margin-right:2rem;
+    margin-top: 1rem;
+    
+}
+.margin-logo-f{
+    margin-right: 2rem;
+    margin-top: 2rem;
+    
+}
+.opacidad{
+    opacity: .8;
+}
+
+.margin-text{
+    padding-left: 1rem;
+    padding-top: 1rem;
+    
+    padding-right: 1rem;
+    
+}
+.margin-text-f{
+    padding-left: .8rem;
+    padding-top: .8rem;
+    
+    
+}
+.positionRelative{
+    position: relative;
+    bottom: -25%;
+
+}
+
+.opacidad-text-f{
+    opacity: .8;
+}
+#education p {
+    margin-bottom: 0;
+}
+#education h4 {
+    margin-bottom: 0;
+}
+
+#education h6 {
+    margin-bottom: 0;
+}
+
+.imagen_dest{
+    height: 95px;
+}
+
+.imagen_no_dest{
+    height: 60px;
+}
+
+.titulo_dest{
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+.titulo_no_dest{
+    font-size: 1rem;
+    font-weight: 200;
+}
+
+.empresa_dest{
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+.empresa_no_dest{
+    font-size: .9rem;
+    font-weight:200;
+}
+
+
+
+.coment_dest{
+    font-size: 1rem;
+    margin-right: 5px;
+    opacity: 1;
+}
+
+.coment_no_dest{
+    font-size: .8rem;
+    margin-right: 10px;
+    opacity: .8;
+}
+
+#mostrar-coment{
+    cursor: pointer;
+}

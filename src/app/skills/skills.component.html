@@ -1,0 +1,30 @@
+<div class="container-fluid bg-dark dialog-container-padding pt-4 pb-4">
+    <div class="row">
+        <div class="col-12 pb-2 ">
+            <div class="d-flex justify-content-center "><h1 class="text-light">Educacion y habilidades  </h1></div>
+            
+        </div>
+    </div>
+    <div class="row container-fluid justify-content-center g-0 p-xxl-5">
+        <div *ngFor="let skill of skills;" class="col-11 col-sm-10 col-md-8 col-xl-4 col-xxl-4 m-xl-3  justify-content-center" >
+            <div class="m-3 p-3 text-light">
+                <div class="d-flex justify-content-between">
+                <h5>{{skill.titulo}}</h5> 
+                <div *ngIf="skill.nivel<40">
+                    <small>Básico</small>  
+                </div>
+                <div *ngIf="skill.nivel>40 && skill.nivel<=60">
+                    <small>Intermedio</small>  
+                </div>
+                <div *ngIf="skill.nivel>60">
+                    <small>Avanzado</small>  
+                </div>
+                </div>
+                <mat-progress-bar value={{skill.nivel}} mode="determinate" color="blue" ></mat-progress-bar>
+            </div>
+            
+        
+        </div>
+        
+    </div>
+</div>

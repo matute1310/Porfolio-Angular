@@ -1,0 +1,105 @@
+
+.tituloImg{
+    background-color: rgb(32, 32, 32);
+    width: 200px!important;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+}
+
+.works {
+    transition: transform .2s; /* Animation */
+    
+    height: 200px;
+    width: 200px!important;
+    min-width: 200px!important;
+    overflow: hidden;
+    z-index: 0;
+    
+}
+
+.works:hover {
+    transform: scale(1.1);  /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    transform-origin: 0px 350px 0px 0px  ;
+    overflow: hidden;
+    transition: .2s linear;
+    
+    z-index: 1;
+    
+
+}
+.max-width800{
+    max-width:1000px;
+    justify-content: center!important;
+}
+
+
+.sinmargen {
+    margin: 0!important;
+    padding: 0!important;
+}
+
+.tamaño_imagen{
+    height: 200px;
+    margin: 0px,0px,0px,-50px;
+}
+.coment{
+    width: 200px;
+    height: 200px;
+    background-color: black;
+    font-size: small;
+    font-weight: 200;
+    padding: 1rem ;
+}
+
+@media only screen and (max-width: 415px) {
+    .works {
+        transition: transform .2s; /* Animation */
+        height: 200px;
+        width: 200px!important;
+        min-width: 200px!important;
+        overflow: hidden;
+    }
+    .works:hover {
+        transform: scale(1.1);  /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+        overflow: hidden;
+        transform-origin: 0px 350px 0px 0px;
+        
+    
+    }
+}
+
+@media only screen and (min-width: 415px) {
+    .works {
+        transition: transform .2s; /* Animation */
+        height: 200px;
+        width: 200px!important;
+        min-width: 200px!important;
+        overflow: hidden;
+        
+        
+    }
+    .works:hover {
+        transform: scale(1.1);  /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+        overflow: hidden;
+    }
+}
+
+
+
+
+/*
+.works {
+    transition: transform .2s; /* Animation */ /*
+    height: 200px;
+    width: 200px!important;
+    min-width: 200px!important;
+    overflow: hidden;
+}
+
+.works:hover {
+    transform: scale(1.1);  /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */ /*
+    transform-origin: 400px;
+    overflow: visible;
+
+}
+*/

@@ -1,0 +1,11 @@
+.barra_altura{
+    height: auto;
+}
+.margintop125{
+    margin-top: 115px;
+}
+.positionRelative{
+    position: relative;
+    bottom: -25%;
+
+}

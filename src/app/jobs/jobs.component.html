@@ -1,0 +1,88 @@
+<div class="container-fluid bg-dark g-0 pb-4 pt-4" id="intro-jobs">   
+    <!--titulo-->
+    <div class="row bg-dark container-fluid justify-content-center g-0">
+        
+        <div class=" col-10 col-sm-6  h2 text-light  g-0 ">
+            EXPERIENCIA
+        </div>
+    </div>
+    <div class="row bg-dark container-fluid g-0 justify-content-center">
+        <div class="col-10 col-md-6 col-lg-5 col-xl-4   text-light ">
+            <p></p>
+        </div>
+    </div>
+    <!--titulo-->
+    
+    <!--trabajos-->
+    
+        <div *ngFor="let trabajo of trabajos; let i = index" id="jobs" class="row container-fluid d-flex  justify-content-center  g-0 bg-dark text-light linea_base">       
+            
+                <div class="col-12 col-sm-4 col-lg-3 col-xl-2  d-flex">
+                    <div class="row container-fluid d-flex g-0   ">
+                        <div class=" container col-10  col-sm-12 d-flex  justify-content-start  justify-content-sm-end margin-logo   ">
+                                <img class="borde rounded d-block " [ngClass]="{imagen_dest: (trabajo.actual===true), imagen_no_dest: (trabajo.actual===false) }" src={{imgUrl+trabajo.logo}}   alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-10 col-sm-8 col-lg-7 col-xl-4">
+                        <div class="row"></div>
+                        <div class="col-12 pt-3 pt-sm-2 ps-sm-4 ">
+                            <div [ngClass]="{titulo_dest:(trabajo.actual===true),titulo_no_dest: (trabajo.actual===false)}">
+                                {{trabajo.titulo}}
+                            </div>
+                            <div [ngClass]="{empresa_dest:(trabajo.actual===true), empresa_no_dest: (trabajo.actual===false)}">
+                                {{trabajo.empresa}}
+                            </div>                               
+                            <div class="opacidad"><small>Desde {{trabajo.fechaInicio|date : 'MMM , y'}} hasta {{trabajo.fechaFinal|date : 'MMM , y'}}</small><small>. {{getExpTrabajo(trabajo.fechaInicio,trabajo.fechaFinal)}}</small></div>
+                            <div class="opacidad"> </div>     
+                        </div>
+                        
+                        <div class="col-11">
+                            <div class=" ps-sm-4" id="mostrar-coment" (click)="toggle(trabajos[i])"><small>{{trabajos[i].nombreBoton}}</small>
+                                <div class="">
+                                    <span *ngIf="!trabajos[i].mostrarComent">
+                                    {{trabajos[i].coment}}
+                                    </span>
+                                </div>
+                            </div>
+                                
+                        </div>
+                </div>
+            </div>
+</div>
+
+    <!--trabajos-->
+    <!--
+    <button class="coment-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseComent"
+            aria-controls="collapseComent"
+            aria-expanded="false"
+            >
+            
+            <div class="">hola</div>
+        </button>
+        <div class="collapse data-toggle" id="collapseComent">
+            <div [ngClass]="{coment_dest:(trabajo.actual===true), coment_no_dest: (trabajo.actual===false)}" >
+                {{trabajo.coment}}
+            </div>
+        </div>
+
+        <button  class="ms-3 mt-0"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapseComent"
+                                aria-controls="collapseComent"
+                                aria-expanded="false"
+                                >
+                                <small>Descripcion</small>
+                            </button>
+                            <div class="collapse data-toggle" id="collapseComent">
+                                <div [ngClass]="{coment_dest:(trabajo.actual===true), coment_no_dest: (trabajo.actual===false)}" class="p-3 ms-3 mb-4 borde">
+                                    {{trabajo.coment}}
+                                </div>
+                            </div>
+
+    -->
+

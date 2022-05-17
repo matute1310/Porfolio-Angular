@@ -1,0 +1,28 @@
+<div class="container-fluid max-width">
+    
+    <h2 mat-dialog-title> {{works[data.indice].titulo}}</h2>
+
+    <mat-dialog-content>
+            <div *ngIf="works[data.indice].imagen.length > 1">
+            <mdb-carousel  [controls]="true">
+                <mdb-carousel-item *ngFor="let img of works[data.indice].imagen" >
+                    <img height="500px"
+                        src={{imgUrl+img}}
+                        class="d-block img-fluid"
+                        alt="..."
+                    />
+                </mdb-carousel-item>
+            </mdb-carousel>
+            </div>
+            <div *ngIf="works[data.indice].imagen.length == 1">
+                <img height="500px" class="img-fluid" src={{imgUrl+works[data.indice].imagen[0]}} alt="">
+            </div>
+
+        <div class="container-fluid">{{works[data.indice].coment}}</div>
+        
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+        <div (click)="close()">Cerrar</div>
+    </mat-dialog-actions>
+    </div>     

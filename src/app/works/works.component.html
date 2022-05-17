@@ -1,0 +1,49 @@
+<div class="container-fluid justify-content-center  bg-dark pt-2 pb-5">
+    <div class="row container-fluid">
+        <div class="col-12">
+            <h1 class="text-center text-light mb-5" >Trabajos realizados</h1>
+        </div>
+    </div>
+    <div class="container d-flex justify-content-center">
+        <div class="row  text-light max-width800 ">
+            <div *ngFor="let work of works; let i =index"  class="col-12  col-sm-4 col-lg-2 tituloImg  sinmargen ">             
+                <div class="tituloImg"><div class=" text-center mb-2 mt-1">{{work.titulo}}</div></div>
+                <div class="works">
+                <div (mouseover)="mostrarComent=true" (mouseout)="mostrarComent=false"  class=" d-sm-flex">
+                        
+                        <div (click)="setIndice(i)" (click)="openDialog()">
+                        <img   class="d-flex   tamaño_imagen  sinmargen" src={{urlImg+work.imagen[0]}}  alt="">
+                        </div>
+                        <div *ngIf="works[i].mostrarGaleria">
+                                <div  data-toggle="modal" data-target="#exampleModal">
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            </div>
+                                            <div class="modal-body">
+                                            ...
+                                            </div>
+                                            <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div> 
+                            </div>
+                        </div>    
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+</div>
+
+

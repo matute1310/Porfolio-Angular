@@ -1,0 +1,51 @@
+<div class="container-fluid bg-dark g-0 pb-4 pt-4" id="intro-jobs">   
+    <!--titulo-->
+    <div class="row bg-dark container-fluid justify-content-center g-0">
+        
+        <div class=" col-10 col-sm-6  h2 text-light  g-0 ">
+            EDUCACION
+        </div>
+    </div>
+    <div class="row bg-dark container-fluid g-0 justify-content-center">
+        <div class="col-10 col-md-6 col-lg-5 col-xl-4   text-light ">
+            <p></p>
+        </div>
+    </div>
+    <!--titulo-->
+    
+    <!--trabajos-->
+    
+        <div *ngFor="let education of educations; let i = index" id="education" class="row container-fluid d-flex  justify-content-center  g-0 bg-dark text-light linea_base">       
+            
+                <div class="col-12 col-sm-4 col-lg-3 col-xl-2  d-flex">
+                    <div class="row container-fluid d-flex g-0   ">
+                        <div class=" container col-10  col-sm-12 d-flex  justify-content-start  justify-content-sm-end margin-logo   ">
+                                <img class="borde rounded d-block imagen_no_dest "  src={{imgUrl+education.logo}}   alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-10 col-sm-8 col-lg-7 col-xl-4">
+                        <div class="col-12 pt-3 pt-sm-2 ps-sm-4 ">
+                            <div>
+                                {{education.titulo}}
+                            </div>
+                            <div>
+                                {{education.empresa}}
+                            </div>                               
+                            <div class="opacidad"><small>Desde {{education.fechaInicio|date : 'MMM , y'}} hasta {{education.fechaFinal|date : 'MMM , y'}}</small></div>
+                            <div class="opacidad"> </div>     
+                        </div>
+                        
+                        <div class="col-11">
+                            <div class=" ps-sm-4" id="mostrar-coment" (click)="toggle(educations[i])"><small>{{educations[i].nombreBoton}}</small>
+                                <div class="">
+                                    <span *ngIf="!educations[i].mostrarComent">
+                                    {{educations[i].coment}}
+                                    </span>
+                                </div>
+                            </div>
+                                
+                        </div>
+                </div>
+            </div>
+</div>

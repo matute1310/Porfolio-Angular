@@ -1,0 +1,34 @@
+
+
+.padding-0{
+    padding-right:0;
+    padding-left:0;
+}
+.sinmargen {
+    margin: 0!important;
+    padding: 0!important;
+}
+
+
+.max-width960{
+    max-width: 960px;
+    justify-content: center!important;
+}
+
+
+
+
+.logosEmpresa{
+    bottom: 25%;
+}
+p{
+    font-size: small;
+}
+
+.altura_footer{
+    height: 100px!important;
+}
+hr{
+    color: cornsilk;
+    margin-top: 20px;
+}

@@ -1,0 +1,72 @@
+<!--navbar-->
+
+<nav class="navbar  navbar-expand-md navbar-dark bg-dark" id="navbar">
+    <div class=" container-fluid bg-dark">
+        <!--logos-->
+        
+        <a class="navbar-brand  bg-dark .navbar-right px-md-0 mx-0"  href="#" >
+            <img  height="50"  src="/assets/img/logos/APLogo-20-20.png">
+            <img  height="50" src="/assets/img/LogosInti.png">
+        </a>
+        
+        <!--logos-->
+        <!--navbar-toggler-->
+        <button class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            >
+            
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!--navbar-toggler-->
+        <div class="collapse navbar-collapse bg-dark mx-0 px-md-0" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a  routerLink="" routerLinkActive=""  class="nav-link text-light" href="#">Sobre mi</a></li>
+                <li class="nav-item "><a routerLink="/education" routerLinkActive=""   class="nav-link text-light" href="#">Educacion</a></li>
+                <li class="nav-item"><a  routerLink="/skills" routerLinkActive=""  class="nav-link text-light" href="#">Skills</a></li>
+                <li class="nav-item"><a  routerLink="/works" routerLinkActive=""  class="nav-link text-light" href="#">Work</a></li>
+                <li class="nav-item "><a routerLink="/jobs" routerLinkActive=""   class="nav-link text-light" href="#">Jobs</a></li>
+                <!--login desplegable-->
+                <div class="nav-item px-2">
+                    <button class="btn bg-light dropdown-toggle"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#menuDesplegable"
+                        aria-controls="navbarNavAltMarkup"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                        >
+                        Log in          
+                    </button>
+                        <div class="dropdown-menu   dropdown-content bg-light" id="menuDesplegable" href="#">
+                            <form class="px-4 py-3" >
+                                <div class="form-group">
+                                <label for="exampleDropdownFormEmail2">Email</label>
+                                <input type="email" class="form-control" id="exampleDropdownFormEmail2" placeholder="email@example.com">
+                                </div>
+                                <div class="form-group">
+                                <label for="exampleDropdownFormPassword2">Password</label>
+                                <input type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder="Password">
+                                </div>
+                                <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="dropdownCheck2">
+                                <label class="form-check-label" for="dropdownCheck2">
+                                    Recordar
+                                </label>
+                                </div>
+                            <button type="submit" class="btn btn-primary">Log in</button>
+                            </form>
+                        </div>
+                </div>
+                <!--login desplegable-->    
+            </ul>
+        </div>
+        <!--navbar-toggler-->
+    </div>   
+</nav>
+
+<!--navbar-->
