@@ -1,42 +1,131 @@
-<div class="container-fluid justify-content-center  bg-dark pt-2 pb-5">
-    <div class="row container-fluid">
-        <div class="col-12">
-            <h1 class="text-center text-light mb-5" >Trabajos realizados</h1>
+<div class="container-fluid backgroundcolor g-0 pt-4 gradientline1">
+    
+<div class="modal fade" id="worksForm" tabindex="-1" role="dialog" aria-labelledby="worksFormLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="worksFormLabel">Agregar trabajo</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="worksForm" (ngSubmit)="onSubmit()">
+                    <input type="hidden" name="id" formControlName="id">                    
+                    <div class="row mb-3">
+                        <label for="titulo" class="col-sm-5 col-form-label">Titulo del trabajo</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="titulo" formControlName="titulo" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="fecha" class="col-sm-10 col-form-label">Fecha de realizacion</label>
+                        <div class="col-sm-10">
+                            <input type="date" name="fecha" formControlName="fecha" class="form-control" required>
+                        </div>
+                    </div>
+                    <!-- Lista de imagenes-->
+                    <div class="row mb-3">
+                        <label for="imagen1" class="col-sm-5 col-form-label">Imagen 1 (Portada)</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="imagen1" formControlName="imagen1" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="imagen2" class="col-sm-5 col-form-label">Imagen 2</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="imagen2" formControlName="imagen2" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="imagen3" class="col-sm-5 col-form-label">Imagen 3</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="imagen3" formControlName="imagen3" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="imagen4" class="col-sm-5 col-form-label">Imagen 4</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="imagen4" formControlName="imagen4" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="imagen5" class="col-sm-5 col-form-label">Imagen 5</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="imagen5" formControlName="imagen5" class="form-control" required>
+                        </div>
+                    </div>
+                
+
+                    <div class="row mb-3">
+                        <label for="coment" class="col-10 col-form-label">Descripción</label>
+                        <div class="col-12">
+                            <textarea class="form-control" type="text" name="coment" id="comentWork" formControlName="coment"  rows="5"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit button"  class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-    <div class="container d-flex justify-content-center">
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container-fluid justify-content-center  backgroundcolor pt-2 pb-5">
+    <div class="row container-fluid g-0 ">
+        <div class="container-fluid col-12 justify-content-center g-0">
+            <div class="row justify-content-center g-0">
+                <div class="h2 fontcolor2 text-center  g-0 "  [ngClass]="{'col-8':!isUserLogged, 'col-7':isUserLogged}">
+                    TRABAJOS REALIZADOS
+                </div>
+                <div *ngIf="isUserLogged" [ngClass]="{'col-1':isUserLogged}">
+                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#worksForm" (click)="onNewWork()">
+                        <span class="material-icons text-dark p-1 m-1 bg-light rounded-circle">add_circle</span>
+                    </button>
+                </div>
+            </div> 
+        </div>
+    </div>
+    <div class="container d-flex justify-content-center pt-5 pb-5">
         <div class="row  text-light max-width800 ">
             <div *ngFor="let work of works; let i =index"  class="col-12  col-sm-4 col-lg-2 tituloImg  sinmargen ">             
-                <div class="tituloImg"><div class=" text-center mb-2 mt-1">{{work.titulo}}</div></div>
-                <div class="works">
-                <div (mouseover)="mostrarComent=true" (mouseout)="mostrarComent=false"  class=" d-sm-flex">
-                        
-                        <div (click)="setIndice(i)" (click)="openDialog()">
-                        <img   class="d-flex   tamaño_imagen  sinmargen" src={{urlImg+work.imagen[0]}}  alt="">
+                <div class="row d-flex">
+                    <div *ngIf="isUserLogged" class="col-8">
+                        <div class="row">
+                        <button class="btn btn-right col-4" (click)="onDeleteWork(i)">
+                            <span class="material-icons text-dark p-1 m-1 bg-light rounded-circle">remove_circle</span>
+                        </button>
+                        <button class="btn btn-right col-4"  data-bs-toggle="modal" data-bs-target="#worksForm" (click)="onEditWork(i)">
+                            <span class="material-icons text-dark p-1 m-1 bg-light rounded-circle">mode_edit</span>    
+                        </button>
                         </div>
-                        <div *ngIf="works[i].mostrarGaleria">
-                                <div  data-toggle="modal" data-target="#exampleModal">
-                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                            </div>
-                                            <div class="modal-body">
-                                            ...
-                                            </div>
-                                            <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
-                                            </div>
-                                        </div>
-                                        </div>
-                                    </div> 
-                            </div>
-                        </div>    
+                    </div> 
+                    <div class="tituloImg col-6">
+                        <div class=" fontcolor1 text-center mb-2 mt-1">
+                            {{work.titulo}}
+                        </div>
+                    </div>
+                </div>
+                <div class="works">
+                <div  class="d-sm-flex">
+                        <div (mouseover)="setIndice(i)"   data-bs-toggle="modal" data-bs-target="#worksGalery">
+                        <img   class="d-flex tamaño_imagen sinmargen cursor"  src={{urlImg+work.imagen1}}  alt="">
+                        </div> 
                 </div>
                 </div>
             </div>
@@ -47,3 +136,40 @@
 </div>
 
 
+
+    <div *ngIf="indiceSeteado" class="modal fade" id="worksGalery" tabindex="-1" role="dialog" aria-labelledby="WorkGaleryLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="WorkGaleryLabel">{{works[getIndice()].titulo}}</h4>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                   <div *ngIf="getWorkGalery(works[getIndice()]).length > 1">
+                        <mdb-carousel  [controls]="true">
+                            <mdb-carousel-item *ngFor="let img of getWorkGalery(works[getIndice()])" >
+                                <img height="500px"
+                                    src={{urlImg+img}}
+                                    class="d-block img-fluid"
+                                    alt="..."
+                                />
+                            </mdb-carousel-item>
+                        </mdb-carousel>
+                        </div>
+                   <div *ngIf="getWorkGalery(works[getIndice()]).length == 1">
+                        <div>
+                        <img height="500px" class="img-fluid" src={{urlImg+works[getIndice()].imagen1}} alt="">
+                        </div>
+                        
+                    </div>
+                    <div>
+                        <p>{{works[getIndice()].coment}}</p>
+                    </div>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+
+</div>
+
+</div>

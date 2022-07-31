@@ -9,3 +9,50 @@
     bottom: -25%;
 
 }
+.index{
+    z-index: 9999;
+}
+
+.fontcolor1{
+    color:#f1f1f2;
+    font-weight: 300;
+    font-size: 1.8rem;
+    
+}
+.fontcolor2{
+    color:#f1f1f2;
+    font-weight:500;
+}
+.fontcolor3{
+    font-size:1.1rem;
+    color: rgb(168, 202, 201);
+    font-weight: 100;
+}
+.background_color{
+    background-color:#00a79d;
+}
+
+.gradientline1 {
+ 
+    border-style: solid;
+    border-width: 3px;
+    border-image: linear-gradient(to left, #00a79d 1%, #f1f1f2 50%, #00a79d 100%) 100% 0 100% 0/3px 0 3px 0 stretch;
+    
+  
+    background-color: #00a79d;
+    color: white;
+    text-align: center;  
+}
+
+.gradientline {
+    
+    border-style: solid;
+    border-width: 3px;
+    border-image: linear-gradient(to right,#f1f1f2 1%,#00a79d 90%,#00a79d 100%) 100% 0 100% 0/3px 0 3px 0 stretch;
+    
+    
+    
+    background-color:#00a79d;
+    color: white;
+    text-align: center;  
+}

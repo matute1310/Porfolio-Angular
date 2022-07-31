@@ -1,4 +1,10 @@
-
+.fix_navbar{
+    position: fixed;
+    z-index:999;
+}
+.banner_margin{
+    margin-top: 76px;
+}
 
 .padding-0{
     padding-right:0;

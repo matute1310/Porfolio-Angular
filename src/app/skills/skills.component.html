@@ -1,30 +1,83 @@
-<div class="container-fluid bg-dark dialog-container-padding pt-4 pb-4">
-    <div class="row">
-        <div class="col-12 pb-2 ">
-            <div class="d-flex justify-content-center "><h1 class="text-light">Educacion y habilidades  </h1></div>
-            
-        </div>
-    </div>
-    <div class="row container-fluid justify-content-center g-0 p-xxl-5">
-        <div *ngFor="let skill of skills;" class="col-11 col-sm-10 col-md-8 col-xl-4 col-xxl-4 m-xl-3  justify-content-center" >
-            <div class="m-3 p-3 text-light">
-                <div class="d-flex justify-content-between">
-                <h5>{{skill.titulo}}</h5> 
-                <div *ngIf="skill.nivel<40">
-                    <small>Básico</small>  
-                </div>
-                <div *ngIf="skill.nivel>40 && skill.nivel<=60">
-                    <small>Intermedio</small>  
-                </div>
-                <div *ngIf="skill.nivel>60">
-                    <small>Avanzado</small>  
-                </div>
-                </div>
-                <mat-progress-bar value={{skill.nivel}} mode="determinate" color="blue" ></mat-progress-bar>
+<div class="container-fluid g-0 colorbg" id="skills">
+<div class="modal fade" id="skillsForm" tabindex="-1" role="dialog" aria-labelledby="skillsFormLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="skillsFormLabel">Habilidades</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            
+            <div class="modal-body">
+                <form [formGroup]="skillsForm" (ngSubmit)="onSubmit()">
+                    <input type="hidden" name="id" formControlName="id">
+                    
+                    <div class="row mb-3">
+                        <label for="titulo" class="col-sm-5 col-form-label">Habilidad-skill</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="titulo" formControlName="titulo" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="nivel" class="col-sm-10 col-form-label">Nivel de conocimiento de 1% a 100%</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="nivel" formControlName="nivel" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit button"  class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid colorbg dialog-container-padding pt-4 pb-4">
+    <div class="container-fluid justify-content-center align-items-center g-0 row">
+            <div class=" h2 d-flex justify-content-center fontcolor2"  [ngClass]="{'col-8':!isUserLogged, 'col-7':isUserLogged}">HABILIDADES / SKILLS</div> 
+            <div  *ngIf="isUserLogged" [ngClass]="{'col-1':isUserLogged}">
+                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#skillsForm" (click)="onNewSkill()">
+                    <span class="material-icons text-dark p-1 m-1 bg-light rounded-circle">add_circle</span>
+                </button>
+            </div> 
+    </div>
+    <div class="row container-fluid justify-content-center g-0 p-xxl-3">
+        <div *ngFor="let skill of skills let i = index" class="col-11 col-sm-10 col-md-8 col-xl-4 col-xxl-4 m-xl-2  justify-content-center" >
+               <div class="row">
+                    <div class=" p-3 text-light">
+                        <div class="d-flex justify-content-between">
+                        <h5>{{skill.titulo}}</h5> 
+                        <div *ngIf="skill.nivel<40">
+                            <small>Básico</small>  
+                        </div>
+                        <div *ngIf="skill.nivel>40 && skill.nivel<=60">
+                            <small>Intermedio</small>  
+                        </div>
+                        <div *ngIf="skill.nivel>60">
+                            <small>Avanzado</small>  
+                        </div>
+                        </div>
+                        <mat-progress-bar value={{skill.nivel}} mode="determinate" color="accent" ></mat-progress-bar>
+                    </div>
+                </div>
+                <div class="row">
+                    
+                        <div *ngIf="isUserLogged" [ngClass]="{'col-1':isUserLogged}" class="container-fluid d-flex align-items-center justify-content-center">
+                            <button class="btn btn-right" (click)="onDeleteSkill(i)">
+                                <span class="material-icons text-dark p-1 m-1 bg-light rounded-circle">remove_circle</span>
+                            </button>
+                            <button class="btn btn-right"  data-bs-toggle="modal" data-bs-target="#skillsForm"(click)="onEditSkill(i)">
+                            <span class="material-icons text-dark p-1 m-1 bg-light rounded-circle">mode_edit</span>    
+                            </button>
+                        </div>
+                    
+                </div>  
+            </div>
         
         </div>
         
-    </div>
+    
+</div>
 </div>

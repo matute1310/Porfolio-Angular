@@ -1,30 +1,122 @@
 <!--footer-->
-
-    <div class="container-fluid g-0 altura_footer bg-dark bg-opacity-75 " id="info">
-        <div class="row container-fluid justify-content-center">
-            
-            <div class="col-4 g-0">
-                
-                
-            
-            </div>
-            <div class="col-4 g-0">
-                    
-                
-            
-            </div>
-            <div class="col-md-4 col-12 g-0">
-                
-                <div class="btn-group  md-float-end justify-content-center  p-4" role="group" aria-label="Basic example">
-                    <button type="button" class="btn  p-0 "><img height="40" src="/assets/img/logos/twitter.png" alt=""></button>
-                    <button type="button" class="btn  p-0 "><img height="40" src="/assets/img/logos/instagram.png" alt=""></button>
-                    <button type="button" class="btn  p-0 "><img height="40" src="/assets/img/logos/facebook.png" alt=""></button>
-                    <button type="button" class="btn  p-0 "><img height="40"  src="/assets/img/logos/EMAIL.png" alt=""></button>
-                    <button type="button" class="btn  p-0 "><img height="40" src="/assets/img/logos/behance.png" alt=""></button>
+<div class="container-fluid g-0 altura_footer bg-dark bg-opacity-75  " id="info">
+    
+    <div class="modal fade" id="redesForm" tabindex="-1" role="dialog" aria-labelledby="redesFormLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="redesFormLabel">Datos de contacto</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-            
+                <div class="modal-body">
+                    <form [formGroup]="redForm" (ngSubmit)="onSubmit()">
+
+                        <input type="hidden" name="id" formControlName="id">
+                        
+                        <div class="row mb-3">
+                            <label for="behance" class="col-3 col-form-label"><img height="30" class="me-1" src="/assets/img/logos/behance.png" alt="Behance">Behance</label>
+                            <div class="col-9">
+                                <input type="text" name="behance" formControlName="behance" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="git" class="col-3 col-form-label"><img height="30" class="me-1" src="/assets/img/logos/git.png" alt="Github">Github</label>
+                            <div class="col-9">
+                                <input type="text" name="git" formControlName="git" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="git" class="col-4 col-form-label"><img height="30" class="me-1" src="/assets/img/logos/instagram.png" alt="Instagram">Instagram</label>
+                            <div class="col-8">
+                                <input type="text" name="instagram" formControlName="instagram" class= "form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="git" class="col-3 col-form-label"><img height="30" class="me-1" src="/assets/img/logos/linkedin.png" alt="Linkedin">Linkedin</label>
+                            <div class="col-9">
+                                <input type="text" name="linkedin" formControlName="linkedin" class= "form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="git" class="col-3 col-form-label"><img height="30" class="me-1" src="/assets/img/logos/twitter.png" alt="Twitter">Twitter</label>
+                            <div class="col-9">
+                                <input type="text" name="twitter" formControlName="twitter" class= "form-control" required>
+                            </div>
+                        </div>
+    
+                        
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="submit button"  class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
+
+    <div class="row container-fluid justify-content-center align-items-center background g-0">
+            
+            <div class="col-md-4  col-0 g-0">
+            </div>
+            <div class="col-md-4 col-sm-6 col-12 g-0 mt-3 mt-sm-0 ">
+                    
+                <div class="text-center"><small><span class="textColor" > © 2022 </span><span class="textColorName"> Matias Calvento</span></small></div>
+            
+            </div>
+            <div class="col-md-4 col-sm-6 col-12 g-0  d-flex justify-content-center">
+                
+                <div class="btn-group p-5 " role="group" aria-label="Basic example">
+                    <div *ngIf="redes.behance!=''">   
+                        <button type="button" class="btn colorRedes  p-0 ">
+                            <a href={{redes.behance}}>
+                            <img height="40" src="/assets/img/logos/behance.png"  alt="behance">
+                            </a>
+                        </button>
+                    </div>                    
+                    <div *ngIf="redes.git!=''">   
+                        <button type="button" class="btn colorRedes p-0 ">
+                            <a href={{redes.git}}>
+                            <img height="40" src="/assets/img/logos/git.png"  alt="Github">
+                            </a>
+                        </button>
+                    </div>
+                    <div *ngIf="redes.instagram!=''">   
+                        <button type="button" class="btn colorRedes p-0 ">
+                            <a href={{redes.instagram}}>
+                            <img height="40" src="/assets/img/logos/instagram.png"  alt="Instagram">
+                            </a>
+                        </button>
+                    </div>
+                    <div *ngIf="redes.linkedin!=''">   
+                        <button type="button" class="btn colorRedes  p-0 ">
+                            <a href={{redes.linkedin}}>
+                            <img height="40" src="/assets/img/logos/linkedin.png"  alt="Linkedin">
+                            </a>
+                        </button>
+                    </div>
+                    <div *ngIf="redes.twitter!=''">   
+                        <button type="button" class="btn colorRedes p-0 ">
+                            <a href={{redes.twitter}}>
+                            <img height="40" src="/assets/img/logos/twitter.png"  alt="twitter">
+                            </a>
+                        </button>
+                    </div>
+                    <div *ngIf="isUserLogged" [ngClass]="{'col-1':isUserLogged}" class="container-fluid d-flex align-items-center justify-content-center">
+                        <button class="btn btn-right"  data-bs-toggle="modal" data-bs-target="#redesForm"(click)="onEditRedes()">
+                        <span class="material-icons text-dark p-1 m-1 bg-light rounded-circle">mode_edit</span>    
+                        </button>
+                    </div>  
+                      
+                </div>
+                
+            
+            </div>
+    </div>
+</div>
 
 <!--footer-->

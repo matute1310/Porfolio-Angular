@@ -92,8 +92,29 @@
 #mostrar-coment{
     cursor: pointer;
 }
-/*.linea_base{
-    border-bottom: solid rgba(245, 245, 245, .5);
-    
-}*/
 
+.backgroundcolor{
+    background-color:#91278f;
+}
+
+.gradientline1 {
+ 
+    border-style: solid;
+    border-width: 1rem;
+    border-image: linear-gradient(to left,#91278f 1%, rgb(166, 244, 248) 50%,#91278f 100%) 100% 0 100% 0/3px 0 3px 0 stretch;
+    
+  
+    background-color:#91278f;
+    
+    
+}
+
+.fontcolor2{
+    color: #f1a129;
+    font-weight: 300;
+}
+
+.fontcolor1{
+    color: rgba(98, 248, 243, 0.801);
+    font-weight:100;
+}

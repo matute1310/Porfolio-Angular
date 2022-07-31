@@ -1,7 +1,41 @@
-.dropdown-content{
-    right: 0;
-}
-
 .navbar-brand{
     position: relative;
+}
+
+.fixed{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
+.colorbg{
+    background: rgb(1, 99, 94);
+}
+
+.colorbg{
+    background:#f15a29;
+}
+
+.colorToggler{
+    color: aliceblue;
+}
+
+.button_style:hover,.button_style:active{
+    color: rgb(7, 10, 10)!important;
+    background-color: rgba(98, 248, 243)!important;
+}
+
+
+
+.button_style{
+    color: rgb(241, 247, 246)!important;
+    font-weight: 100!important;
+    font-size: 1rem!important;
+}
+
+#logos img{
+    height: auto;
+    width: auto;
+    max-height: 60px;
 }

@@ -1,13 +1,15 @@
 
 .tituloImg{
-    background-color: rgb(32, 32, 32);
     width: 200px!important;
     color: rgb(255, 255, 255);
     font-weight: 600;
 }
 
+modal-body{
+    color: black!important;
+}
 .works {
-    transition: transform .2s; /* Animation */
+    transition: transform .2s; 
     
     height: 200px;
     width: 200px!important;
@@ -18,7 +20,7 @@
 }
 
 .works:hover {
-    transform: scale(1.1);  /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    transform: scale(1.1);  
     transform-origin: 0px 350px 0px 0px  ;
     overflow: hidden;
     transition: .2s linear;
@@ -53,14 +55,14 @@
 
 @media only screen and (max-width: 415px) {
     .works {
-        transition: transform .2s; /* Animation */
+        transition: transform .2s; 
         height: 200px;
         width: 200px!important;
         min-width: 200px!important;
         overflow: hidden;
     }
     .works:hover {
-        transform: scale(1.1);  /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+        transform: scale(1.1);  
         overflow: hidden;
         transform-origin: 0px 350px 0px 0px;
         
@@ -70,7 +72,7 @@
 
 @media only screen and (min-width: 415px) {
     .works {
-        transition: transform .2s; /* Animation */
+        transition: transform .2s; 
         height: 200px;
         width: 200px!important;
         min-width: 200px!important;
@@ -79,27 +81,36 @@
         
     }
     .works:hover {
-        transform: scale(1.1);  /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+        transform: scale(1.1);  
         overflow: hidden;
     }
 }
 
-
-
-
-/*
-.works {
-    transition: transform .2s; /* Animation */ /*
-    height: 200px;
-    width: 200px!important;
-    min-width: 200px!important;
-    overflow: hidden;
+.fontcolor2{
+    color:#f15a29;
+    font-weight: 300;
 }
 
-.works:hover {
-    transform: scale(1.1);  /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */ /*
-    transform-origin: 400px;
-    overflow: visible;
-
+.fontcolor1{
+    color: rgba(98, 248, 243, 0.801);
+    font-weight:100;
+    font-size: 1rem;
 }
-*/
+.backgroundcolor{
+    background-color:  rgb(57, 31, 129);
+}
+
+.gradientline1 {
+ 
+    border-style: solid;
+    border-width: 1rem;
+    border-image: linear-gradient(to left, rgb(57, 31, 129) 1%,rgb(166, 244, 248) 50%,rgb(57, 31, 129) 100%) 100% 0 100% 0/3px 0 3px 0 stretch;
+    
+  
+    background-color:rgb(57, 31, 129);
+    
+}
+
+.cursor{
+    cursor: pointer;
+}

@@ -2,7 +2,7 @@
     border :2px solid rgba(245, 245, 245, .8);
 }
 .margin-logo{
-    margin-right:2rem;
+    margin-right:.5rem;
     margin-top: 1rem;
     
 }
@@ -91,4 +91,20 @@
 
 #mostrar-coment{
     cursor: pointer;
+}
+
+.colorbg{
+    background: #1b75bc;
+}
+
+
+
+.fontcolor2{
+    color:#6be7dd;
+    font-weight: 300;
+}
+
+.fontcolor1{
+    color: #6bcde7;
+    font-weight:400;
 }

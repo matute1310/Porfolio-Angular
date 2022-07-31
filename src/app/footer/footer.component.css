@@ -1,0 +1,14 @@
+.background{
+    background-color: rgb(27, 0, 63);
+}
+.textColorName{
+    color: rgb(0, 255, 213);
+}
+
+.textColor{
+    color: rgb(226, 226, 226);
+}
+
+.colorRedes{
+    filter:invert();
+}

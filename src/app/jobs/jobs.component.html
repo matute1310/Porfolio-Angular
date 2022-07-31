@@ -1,12 +1,96 @@
-<div class="container-fluid bg-dark g-0 pb-4 pt-4" id="intro-jobs">   
-    <!--titulo-->
-    <div class="row bg-dark container-fluid justify-content-center g-0">
+<div class="container-fluid backgroundcolor g-0 pb-4 pt-4 gradientline1" id="intro-jobs">   
+    <div class="modal fade " id="jobsForm" tabindex="-1" role="dialog" aria-labelledby="jobsFormLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="jobFormLabel">EXPERIENCIA LABORAL</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    
+                </button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="jobsForm" (ngSubmit)="onSubmit()" >
+                    
+                    <input type="hidden" name="id" formControlName="id">
+                    <input type="hidden" name="mostrarComent" value="Mostrar" formControlName="id">
+                    <div class="row mb-3">
+                        <label for="titulo" class="col-sm-2 col-form-label">Título</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="titulo" formControlName="titulo" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="empresa" class="col-sm-2 col-form-label">Empresa</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="empresa" formControlName="empresa" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="fechaInicio" class="col-sm-10 col-form-label">Fecha de inicio</label>
+                        <div class="col-sm-12">
+                            <input type="date" name="fechaInicio" formControlName="fechaInicio" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3 ">
+                        <div class="form-check form-check-inline col-10 container-fluid justify-content-center">
+                            <input type="checkbox" name="actual" [formControl]="Actual" id="actual" class="form-check-input" required>
+                            <label for="actual" class="form-check-label">Hasta la actualidad</label>
+                        
+                        </div>
+                    </div>
+                    
+                    <div  class="row mb-3">
+                        <label for="fechaFinal" class="col-sm-10 col-form-label">Fecha de finalizacion</label>
+                        <div class="col-sm-12">
+                            <input type="date" name="fechaFinal" formControlName="fechaFinal" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="logo" class="col-sm-2 col-form-label">Logo</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="logo" formControlName="logo" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="coment" class="col-10 col-form-label">Descripción</label>
+                        <div class="col-12">
+                            <textarea class="form-control" type="text" name="coment" id="comentJob" formControlName="coment"  rows="5"></textarea>
+                        </div>
+                    </div>
+
+
         
-        <div class=" col-10 col-sm-6  h2 text-light  g-0 ">
-            EXPERIENCIA
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit button"  class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+                        </div>
+                    </form>    
+                </div>
+            
+            </div>
         </div>
     </div>
-    <div class="row bg-dark container-fluid g-0 justify-content-center">
+    
+    
+    <!--titulo-->
+    <div class="row backgroundcolor container-fluid justify-content-center g-0">
+        
+        <div class="h2 fontcolor2 text-center g-0" [ngClass]="{'col-8':!isUserLogged, 'col-7':isUserLogged}">
+            EXPERIENCIA LABORAL
+        </div>
+        <div class="col-1 " *ngIf="isUserLogged">
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#jobsForm" (click)="onNewJob()">
+                <span class="material-icons text-dark p-1 m-1 bg-light rounded-circle">add_circle</span>
+            </button>
+        </div> 
+    </div>
+    <div class="row backgroundcolor container-fluid g-0 justify-content-center">
         <div class="col-10 col-md-6 col-lg-5 col-xl-4   text-light ">
             <p></p>
         </div>
@@ -15,74 +99,61 @@
     
     <!--trabajos-->
     
-        <div *ngFor="let trabajo of trabajos; let i = index" id="jobs" class="row container-fluid d-flex  justify-content-center  g-0 bg-dark text-light linea_base">       
+        <div *ngFor="let job of jobs; let i = index" id="jobs" class="row container-fluid d-flex  justify-content-center  g-0 backgroundcolor text-light linea_base">       
             
-                <div class="col-12 col-sm-4 col-lg-3 col-xl-2  d-flex">
-                    <div class="row container-fluid d-flex g-0   ">
-                        <div class=" container col-10  col-sm-12 d-flex  justify-content-start  justify-content-sm-end margin-logo   ">
-                                <img class="borde rounded d-block " [ngClass]="{imagen_dest: (trabajo.actual===true), imagen_no_dest: (trabajo.actual===false) }" src={{imgUrl+trabajo.logo}}   alt="">
-                        </div>
+            <div class="col-12 col-sm-10 col-lg-10 col-xl-8 d-flex justify-content-center">
+                <div class="row container-fluid d-flex justify-content-center ">
+                    <div class="col-12 col-sm-1  col-xl-1   justify-content-start justify-content-sm-end margin-logo" [ngClass]="{'pl-5': job.actual&&viewportMenorA(880)}">
+                                <img class="borde rounded d-block " [ngClass]="{'imagen_dest': (job.actual===true), 'imagen_no_dest': (job.actual===false) }" src={{imgUrl+job.logo}}   alt="">
                     </div>
-                </div>
-                <div class="col-10 col-sm-8 col-lg-7 col-xl-4">
-                        <div class="row"></div>
-                        <div class="col-12 pt-3 pt-sm-2 ps-sm-4 ">
-                            <div [ngClass]="{titulo_dest:(trabajo.actual===true),titulo_no_dest: (trabajo.actual===false)}">
-                                {{trabajo.titulo}}
-                            </div>
-                            <div [ngClass]="{empresa_dest:(trabajo.actual===true), empresa_no_dest: (trabajo.actual===false)}">
-                                {{trabajo.empresa}}
-                            </div>                               
-                            <div class="opacidad"><small>Desde {{trabajo.fechaInicio|date : 'MMM , y'}} hasta {{trabajo.fechaFinal|date : 'MMM , y'}}</small><small>. {{getExpTrabajo(trabajo.fechaInicio,trabajo.fechaFinal)}}</small></div>
-                            <div class="opacidad"> </div>     
-                        </div>
-                        
-                        <div class="col-11">
-                            <div class=" ps-sm-4" id="mostrar-coment" (click)="toggle(trabajos[i])"><small>{{trabajos[i].nombreBoton}}</small>
-                                <div class="">
-                                    <span *ngIf="!trabajos[i].mostrarComent">
-                                    {{trabajos[i].coment}}
+                    
+                    <div class="col-12 col-sm-8 col-lg-7 col-xl-6">
+                        <div class="row">
+                            <div class="col-10 pt-3 pt-sm-2 ps-sm-5 ">
+                                <div [ngClass]="{titulo_dest:(job.actual===true),titulo_no_dest: (job.actual===false)}">
+                                    {{job.titulo}}
+                                </div>
+                                <div [ngClass]="{empresa_dest:(job.actual===true), empresa_no_dest: (job.actual===false)}">
+                                    {{job.empresa}}
+                                </div>                               
+                                <div class="opacidad">
+                                    <small>Desde {{job.fechaInicio|date : 'MMM , y'}} hasta </small>
+                                    <span *ngIf="!job.actual">
+                                        <small>{{job.fechaFinal|date : 'MMM , y'}}</small>
+                                    </span>
+                                    <span *ngIf="job.actual">
+                                        <small>{{fechaHoy|date : 'MMM , y'}}</small>
                                     </span>
                                 </div>
+                                <div class="opacidad">
+                                    <div *ngIf="job.actual">{{getExpTrabajo(job.fechaInicio,fechaHoy)}}</div>
+                                    <div *ngIf="!job.actual">{{getExpTrabajo(job.fechaInicio,job.fechaFinal)}}</div>
+                                </div>     
+                                <div class=" col-11 align-left" id="mostrar-coment" (click)="toggle(jobs[i])">
+                                    <small>{{jobs[i].nombreBoton}} <span *ngIf="jobs[i].nombreBoton=='Mostrar'" class="material-icons mt-1">expand_more</span> <span *ngIf="jobs[i].nombreBoton=='Ocultar'" class="material-icons mt-1">expand_less</span> </small>
+                                    <div class="col-10">
+                                    <span *ngIf="jobs[i].mostrarComent">
+                                    <P>{{jobs[i].coment}}</P>
+                                    </span>
+                                    </div>
+                                </div>
+                                        
                             </div>
-                                
-                        </div>
+                            <div *ngIf="isUserLogged" class="col-2 col-sm-1" >
+                                <button class="btn btn-right" (click)="onDeleteJob(i)">
+                                    <span class="material-icons text-dark p-1 m-1 bg-light rounded-circle">remove_circle</span>
+                                </button>
+                                <button class="btn btn-right"  data-bs-toggle="modal" data-bs-target="#jobsForm"(click)="onEditJob(i)">
+                                <span class="material-icons text-dark p-1 m-1 bg-light rounded-circle">mode_edit</span>    
+                                </button>
+                            </div>   
+                        
+                        
+                        </div>                        
+                    </div>
+                    <hr>
                 </div>
             </div>
-</div>
-
-    <!--trabajos-->
-    <!--
-    <button class="coment-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseComent"
-            aria-controls="collapseComent"
-            aria-expanded="false"
-            >
-            
-            <div class="">hola</div>
-        </button>
-        <div class="collapse data-toggle" id="collapseComent">
-            <div [ngClass]="{coment_dest:(trabajo.actual===true), coment_no_dest: (trabajo.actual===false)}" >
-                {{trabajo.coment}}
-            </div>
         </div>
-
-        <button  class="ms-3 mt-0"
-                                type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#collapseComent"
-                                aria-controls="collapseComent"
-                                aria-expanded="false"
-                                >
-                                <small>Descripcion</small>
-                            </button>
-                            <div class="collapse data-toggle" id="collapseComent">
-                                <div [ngClass]="{coment_dest:(trabajo.actual===true), coment_no_dest: (trabajo.actual===false)}" class="p-3 ms-3 mb-4 borde">
-                                    {{trabajo.coment}}
-                                </div>
-                            </div>
-
-    -->
+</div>
 

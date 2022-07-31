@@ -1,51 +1,142 @@
-<div class="container-fluid bg-dark g-0 pb-4 pt-4" id="intro-jobs">   
-    <!--titulo-->
-    <div class="row bg-dark container-fluid justify-content-center g-0">
-        
-        <div class=" col-10 col-sm-6  h2 text-light  g-0 ">
-            EDUCACION
-        </div>
-    </div>
-    <div class="row bg-dark container-fluid g-0 justify-content-center">
-        <div class="col-10 col-md-6 col-lg-5 col-xl-4   text-light ">
-            <p></p>
-        </div>
-    </div>
-    <!--titulo-->
-    
-    <!--trabajos-->
-    
-        <div *ngFor="let education of educations; let i = index" id="education" class="row container-fluid d-flex  justify-content-center  g-0 bg-dark text-light linea_base">       
+<div class="container-fluid colorbg g-0 pb-4 pt-5 gradientline1" id="intro-jobs">   
+
+
+<div class="modal fade " id="eduForm" tabindex="-1" role="dialog" aria-labelledby="educationFormLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="educationFormLabel">Formación academica</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
             
-                <div class="col-12 col-sm-4 col-lg-3 col-xl-2  d-flex">
-                    <div class="row container-fluid d-flex g-0   ">
-                        <div class=" container col-10  col-sm-12 d-flex  justify-content-start  justify-content-sm-end margin-logo   ">
-                                <img class="borde rounded d-block imagen_no_dest "  src={{imgUrl+education.logo}}   alt="">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-10 col-sm-8 col-lg-7 col-xl-4">
-                        <div class="col-12 pt-3 pt-sm-2 ps-sm-4 ">
-                            <div>
-                                {{education.titulo}}
-                            </div>
-                            <div>
-                                {{education.empresa}}
-                            </div>                               
-                            <div class="opacidad"><small>Desde {{education.fechaInicio|date : 'MMM , y'}} hasta {{education.fechaFinal|date : 'MMM , y'}}</small></div>
-                            <div class="opacidad"> </div>     
-                        </div>
-                        
-                        <div class="col-11">
-                            <div class=" ps-sm-4" id="mostrar-coment" (click)="toggle(educations[i])"><small>{{educations[i].nombreBoton}}</small>
-                                <div class="">
-                                    <span *ngIf="!educations[i].mostrarComent">
-                                    {{educations[i].coment}}
-                                    </span>
-                                </div>
-                            </div>
-                                
-                        </div>
+        </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="eduForm" (ngSubmit)="onSubmit()" >
+            
+            <input type="hidden" name="id" formControlName="id">
+            <input type="hidden" name="mostrarComent" value="Mostrar" formControlName="id">
+            
+            <div class="row mb-3">
+                <label for="titulo" class="col-sm-2 col-form-label">Título</label>
+                <div class="col-sm-10">
+                    <input type="text" name="titulo" formControlName="titulo" class="form-control" required>
                 </div>
             </div>
+
+            <div class="row mb-3">
+                <label for="institucion" class="col-sm-2 col-form-label">Institución</label>
+                <div class="col-sm-10">
+                    <input type="text" name="institucion" formControlName="institucion" class="form-control" required>
+                </div>
+            </div>
+            
+            <div class="row mb-3">
+                <label for="logo" class="col-sm-2 col-form-label">Logotipo</label>
+                <div class="col-sm-10">
+                    <input type="text" name="logo" formControlName="logo" class="form-control" required>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="fechaFinal" class="col-10 col-form-label">Fecha de finalizacion</label>
+                <div class="col-12">
+                    <input type="date" name="fechaFinal" formControlName="fechaFinal" class="form-control" required>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="coment" class="col-10 col-form-label">Descripción</label>
+                <div class="col-12">
+                    <textarea class="form-control" type="text" name="coment" id="coment" formControlName="coment"  rows="5"></textarea>
+                </div>
+            </div>
+            
+           
+        
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="submit button"  class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+                </div>
+            </form>    
+        </div>
+        
+        </div>
+    </div>
 </div>
+
+
+
+
+
+
+    <!--titulo-->
+    <div class="container-fluid    justify-content-center  g-0">
+            <div class="row container-fluid justify-content-center align-items-center g-0">
+            <div class=" text-center  h2 fontcolor2" [ngClass]="{'col-8':!isUserLogged, 'col-7':isUserLogged}">FORMACIÓN ACADÉMICA</div>
+             <!--boton del modal crear educacion-->
+             <div *ngIf="isUserLogged" class="col-1">
+                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#eduForm" (click)="onNewEducation()">
+                    <span class="img-fluid material-icons text-dark p-1 m-1 bg-light rounded-circle">add_circle</span>
+                </button>
+            </div>
+            <div class="col-8  text-center  fontcolor1">CARRERAS - CURSOS</div>
+            
+            </div>     
+        
+    </div>
+    <!--titulo-->
+    
+    <!--Educacion-->
+    
+        <div *ngFor="let education of educations; let i = index" id="education" class="row container-fluid d-flex  justify-content-center  g-0  text-light linea_base ">       
+                
+            <div class="col-12 col-sm-10 col-lg-10 col-xl-8 d-flex justify-content-center">
+                    <div class="row container-fluid d-flex justify-content-center ">
+                        
+                        <div class=" col-12  col-sm-1 col-xl-1   justify-content-start justify-content-sm-end margin-logo">
+                            <img class="borde rounded d-block imagen_no_dest"  src={{imgUrl+education.logo}}   alt="">
+                        </div>
+                            
+                        <div class="col-12 col-sm-8 col-lg-7 col-xl-6 pt-3 pt-sm-2 ps-sm-4 mb-2  ">
+                           <div class="row">
+                                <div class="col-10">
+                                    <div>
+                                        {{education.titulo}}
+                                    </div>
+                                    <div>
+                                        {{education.institucion}}
+                                    </div>                               
+                                    <div class="opacidad"><small>Fecha egreso. {{education.fechaFinal|date : 'MMM , y'}}</small></div>
+                                    <div class="opacidad"> </div>     
+                                
+                                    <div class="col-11 align-left" id="mostrar-coment" (click)="toggle(educations[i])">
+                                        <small class="align-items-center">{{educations[i].nombreBoton}} <span *ngIf="educations[i].nombreBoton=='Mostrar'" class="material-icons mt-1">expand_more</span> <span *ngIf="educations[i].nombreBoton=='Ocultar'" class="material-icons mt-1">expand_less</span> </small>
+                                        <div class="col-10">
+                                        <span *ngIf="educations[i].mostrarComent">
+                                        <p>{{educations[i].coment}}</p>
+                                        </span>
+                                        </div>
+                                    </div>
+                                            
+                                    
+                        
+                                </div>
+                           
+                                <div *ngIf="isUserLogged" [ngClass]="{'col-1':isUserLogged}">
+                                    <button class="btn btn-right" (click)="onDeleteEducation(i)">
+                                        <span class="material-icons text-dark p-1 m-1 bg-light rounded-circle">remove_circle</span>
+                                    </button>
+                                    <button class="btn btn-right"  data-bs-toggle="modal" data-bs-target="#eduForm"(click)="onEditEducation(i)">
+                                    <span class="material-icons text-dark p-1 m-1 bg-light rounded-circle">mode_edit</span>    
+                                    </button>
+                                </div>
+                            
+                            </div>     
+                        
+                    </div>
+                    <hr>
+                </div>        
+            </div>
+        
+</div>
+
