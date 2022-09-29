@@ -1,6 +1,4 @@
-# MiApp
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
+# Personal portfolio.
 
 This is the frontend code of my personal portfolio made using Angular and boostrap.
 
